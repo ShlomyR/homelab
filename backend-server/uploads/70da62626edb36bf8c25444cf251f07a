@@ -1,0 +1,527 @@
+<template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <v-row no-gutters justify="center" align="center">
+    <v-col justify="center" align="center">
+      <transition name="image-transition" appear>
+        <v-img
+          src="https://lh3.googleusercontent.com/__DfTTgJVGvQ6Co10pYyq3DNdyO5CydjK3m0EoGbBsbf5FQ46U3a5ZkcGrZb9JG6ZD8V72SBPRrLCRijWMwHMFF5yUsGog=s1600"
+          cover :max-height="isMobile ? '1500' : '550'" max-width="100%" class="image2-container">
+          <div class="text-container">
+            <transition name="fade-phon" appear>
+              <v-col cols="12" sm="7" :style="isMobile ? 'font-size: 20px;' : 'font-size: 30px;'" class="text-white  "
+                justify="center" align="center">
+                <h1>
+                  CSA.LOCKSMITH
+                </h1>
+              </v-col>
+            </transition>
+            <v-row cols="12" no-gutters justify="center" align="center">
+              <transition name="fade" appear>
+                <v-col :style="isMobile ? 'font-size: 10px;' : 'font-size: 10px;'" class="text-white ">
+                  <h1>
+                    PROFESSIONAL LOCKSMITH SERVICES
+                  </h1>
+                </v-col>
+              </transition>
+
+            </v-row>
+            <v-row class="mt-5" no-gutters justify="center" align="center">
+              <transition name="fade-phon" appear>
+                <v-col :class="isMobile ? 'mb-5' : 'mb-0'" justify="center" align="center">
+                  <v-btn href="tel:+(470) 755-0032" :size="isMobile ? 'small' : 'x-large'" color="green">
+                    Call us now (470) 755-0032
+                  </v-btn>
+                </v-col>
+              </transition>
+            </v-row>
+          </div>
+        </v-img>
+      </transition>
+
+    </v-col>
+  </v-row>
+
+  <v-img cover class="image-keys-container" width="100%" :height="isMobile ? '' : ''"
+    src="https://lh3.googleusercontent.com/CMEaa-1k3FG1rThTN7TVXXmaZDJgBWoEGez_k0xqEk2GQaQfnA-DK2OCWwTmx1qQ_YUGSeJEmwDPOCj1t5Pz1UH7YAVhLw=s1600">
+    <v-row class="text-container text-black" no-gutters justify="center" align="center">
+      <v-col class="mt-5">
+        <v-img height="50"
+          src="https://lh3.googleusercontent.com/GE0W4M09yAENnGhf4YtgIkwn7rlPEuAVVSGcaOPgNo1FmNB3V_RnsWd3f4OpxcjPFIg9Z4d6TsC-VxvKlLXMpA_eEwknsw=s100">
+        </v-img>
+        <v-row cols="12"
+          :style="`font-weight: bold; font-family: Times New Roman; display: flex; font-size: ${isMobile ? '25px' : '40px'}`"
+          justify="center" align="center">
+          <v-col justify="center" align="center" :cols="isMobile ? '12' : '4'">
+            Professional Locksmith Services
+            We Are The Key To Fix Your Lock's!
+          </v-col>
+        </v-row>
+        <v-row dense>
+          <v-col class="mt-5 mb-5" justify="center" align="center" v-for="card in cards" :key="card.id" cols="12" sm="6"
+            md="3">
+            <v-card max-height="450" class="body_2" height="700px">
+              <v-img height="800" width="700" cover class="image-container wobble" :src="card.imageUrl"
+                @mouseover="zoomIn" @mouseleave="zoomOut">
+                <div class="text-container">
+                  <v-col justify="center" align="center">
+                    <h2>{{ card.title }}</h2>
+                  </v-col>
+                  <v-col style="font-family: Times New Roman; display: flex; font-size: 17px;" class="text-white"
+                    justify="center" align="center">
+                    {{ card.content }}
+                  </v-col>
+                  <v-btn href="tel:+(470) 755-0032">
+                    call now
+                  </v-btn>
+                </div>
+              </v-img>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-img>
+  <v-img cover class="image-sky-container" width="100%" :height="isMobile ? '' : ''"
+    src="https://lh3.googleusercontent.com/1VCVKKHz3rRzu8cCWvgp7-vhOECfDJSRe4D9Qy76_rQTaxb5stMotCND5In8Uj5xqYd68gPhkPUTgiUejOziR_-m_84CROc=s1600">
+    <v-row class="text-sky-container text-black" no-gutters justify="center" align="center">
+      <v-col class="mt-5">
+        <v-row cols="12"
+          :style="`font-weight: bold; font-family: Times New Roman; display: flex; font-size: ${isMobile ? '25px' : '40px'}`"
+          justify="center" align="center">
+          <v-col justify="center" align="center" :cols="isMobile ? '12' : '4'">
+            our services
+          </v-col>
+        </v-row>
+        <v-col justify="center" align="center">
+          <v-divider  :length="isMobile ? '85px' : '150px'" :thickness="isMobile ? '6' : '5'" class="border-opacity-100" color="warning"></v-divider>
+        </v-col>
+        <v-row no-gutters cols="12" class="mt-5 mb-5" dense>
+          <v-col class="pt-3"  justify="center" align="center" v-for="icon in icons" :key="icon.id" :cols="isMobile ? '12' : '4'">
+            <v-card variant="text" max-width="500" max-height="450" height="700px">
+                <div class="text-container">
+                  <v-col justify="center" align="center">
+                    <v-img height="50"
+                    :src="icon.imageUrl">
+                    </v-img>
+                    <h2>{{ icon.subtitle }}</h2>
+                  </v-col>
+                  <v-col style="font-family: Times New Roman; display: flex; font-size: 17px;" class="text-black" justify="center" align="center">
+                    {{ icon.content }}
+                  </v-col>
+                  <v-btn href="tel:+(470) 755-0032">
+                    call now
+                  </v-btn>
+                </div>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-img>
+</template>
+
+
+<script lang="ts" setup>
+import { ref, watchEffect } from 'vue';
+
+import localImageBackground from "@/assets/locksmith-key-lock.jpeg";
+import localImageFace from "@/assets/locksmith-face.jpg";
+const imageTransition = ref(false);
+import { useAuth } from "@/components/useAuth";
+const { isMobile } = useAuth();
+
+
+
+const startTransition = () => {
+  imageTransition.value = true;
+};
+window.addEventListener('DOMContentLoaded', startTransition);
+
+
+const showT = ref(false);
+const colorClasses = [
+  'text-light-green-darken-1',
+  'text-light-green-darken-2',
+  'text-light-green-darken-3',
+];
+const currentColorIndex = ref(0);
+const changeColor = () => {
+  currentColorIndex.value = (currentColorIndex.value + 1) % colorClasses.length;
+};
+
+// Watch for changes in currentColorIndex and apply the corresponding color class
+// watchEffect(() => {
+//   const newIndex = currentColorIndex.value;
+//   document.querySelector('.custom-font')?.classList.remove(...colorClasses);
+//   document.querySelector('.custom-font')?.classList.add(colorClasses[newIndex]);
+// });
+
+// Set up a timer to change the color every 3 seconds
+setInterval(changeColor, 3000);
+
+const currentColorClass = colorClasses[currentColorIndex.value];
+
+// const cards = [
+//   { id: 1, imageUrl: 'https://lh3.googleusercontent.com/7SV8Up1x2fpusnqR13r7K4yCDyUKi97oZodX9Ag_UhL9t2w2fRjY2j162iXGEyZL47heIB8Ow2okBzQtKB4-HAXsOoeq51w=s856', title: 'Card 1' },
+//   { id: 2, imageUrl: 'https://via.placeholder.com/150', title: 'Card 2' },
+//   { id: 3, imageUrl: 'https://via.placeholder.com/150', title: 'Card 3' },
+//   { id: 4, imageUrl: 'https://via.placeholder.com/150', title: 'Card 4' },
+
+// ];
+
+const cards = [
+  {
+    id: 1,
+    title: "Emergency Locksmith",
+    subtitle: "Subtitle for Title 1",
+    content:
+      "Whether it’s 7:00 AM or 11:00 PM – We are at your service always! Locked out of your car? Lost keys to your apartment? Our 24 hour locksmiths are prepared to assist you with all your emergency locksmith needs. Whether you find yourself locked out of your vehicle or home, or you’ve recently experienced a break-in and your lock is damaged, we will provide the reliable and quick emergency assistance you need.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/Z5RM5NWvKofVQm29HPrPRheHtM9NO3Y0Gx_2ajhm5TrzSKqGSy2v1OcKUr1Srna4TKyvoBzbMEUR8O4dzYL0bDX0kGJKFiY=s856",
+  },
+  {
+    id: 2,
+    title: "Car Locksmith",
+    subtitle: "Subtitle for Title 2",
+    content:
+      "Whether you are interested in key for programming, car key replacement, repair car door lock or ignition switch, changing key fob battery, car key copy or any other service, you can count on CSA.LOCKSMITH! We can handle most car makes and models, from older to the latest model.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/dN9N2D7NMmcYAStQ36d5PrNTKjvSwuzbI6zCsXkKOlheR9d7CqBfFZrKsXGDx8w_9ZkCtc2Mm_knMp3MBXr9_8HbQQ6HxVc=s856",
+  },
+  {
+    id: 3,
+    title: "Residential Locksmith",
+    subtitle: "Subtitle for Title 1",
+    content:
+      "Have you locked yourself out of your house? Need a lock rekey for your new apartment, install a new door lock, or duplicate keys? Whatever your door locks and keys needs, you can count on CSA.LOCKSMITH to serve you. Our 24 hour emergency locksmiths are available any time, day or night.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/PmVazeHzIOiKPgIgiwiFWEmWo8Mm_mol-QsBQ-IuvCEklJEwI6rtMkNDv34OYrc2cYJvh9y4QeJ6w40qgVmMQV89GBtMSrA=s856",
+  },
+  {
+    id: 4,
+    title: "Commercial Locksmith",
+    subtitle: "Subtitle for Title 2",
+    content:
+      "Have you locked yourself out of your house? Need a lock rekey for your new apartment, install a new door lock, or duplicate keys? Whatever your door locks and keys needs, you can count on simon.Locks to serve you. Our 24 hour emergency locksmiths are available any time, day or night.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/7SV8Up1x2fpusnqR13r7K4yCDyUKi97oZodX9Ag_UhL9t2w2fRjY2j162iXGEyZL47heIB8Ow2okBzQtKB4-HAXsOoeq51w=s856",
+  },
+];
+
+const icons = [
+  {
+    id: 1,
+    title: "24/7 Emergency lockout service",
+    subtitle: "24/7 Emergency lockout service",
+    content: "Locked out of your house? Your car keys Locked in the car? Lost your home keys? We can open your car, apartment or office door, rectify any damage, and replace locks.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/Z5RM5NWvKofVQm29HPrPRheHtM9NO3Y0Gx_2ajhm5TrzSKqGSy2v1OcKUr1Srna4TKyvoBzbMEUR8O4dzYL0bDX0kGJKFiY=s856",
+  },
+  {
+    id: 2,
+    title: "Car services",
+    subtitle: "Car services",
+    content: "• Key fob programming • Car key replacement • Ignition switch repair • Car door lock repair • Car Lock Out • Fixing Ignition lock cylinder",
+    imageUrl:
+      "https://lh3.googleusercontent.com/dN9N2D7NMmcYAStQ36d5PrNTKjvSwuzbI6zCsXkKOlheR9d7CqBfFZrKsXGDx8w_9ZkCtc2Mm_knMp3MBXr9_8HbQQ6HxVc=s856",
+  },
+  {
+    id: 3,
+    title: "Commercial & Residential Locks",
+    subtitle: "Commercial & Residential Locks",
+    content: "New Lock installation, Lock rekey, Lock change and Lock repair. We will help you choose the right lock based on your needs & budget.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/PmVazeHzIOiKPgIgiwiFWEmWo8Mm_mol-QsBQ-IuvCEklJEwI6rtMkNDv34OYrc2cYJvh9y4QeJ6w40qgVmMQV89GBtMSrA=s856",
+  },
+  {
+    id: 4,
+    title: "IdentityKey Duplication",
+    subtitle: "IdentityKey Duplication",
+    content: "Our key duplication services cover all of the major lock brands.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/7SV8Up1x2fpusnqR13r7K4yCDyUKi97oZodX9Ag_UhL9t2w2fRjY2j162iXGEyZL47heIB8Ow2okBzQtKB4-HAXsOoeq51w=s856",
+  },
+  {
+    id: 5,
+    title: "Doors",
+    subtitle: "Doors",
+    content: "We install, repair or replace apartment and commercial doors such as metal doors, wood doors, glass doors, and aluminium doors, all are custom made to fit your needs and requirements.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/PmVazeHzIOiKPgIgiwiFWEmWo8Mm_mol-QsBQ-IuvCEklJEwI6rtMkNDv34OYrc2cYJvh9y4QeJ6w40qgVmMQV89GBtMSrA=s856",
+  },
+  {
+    id: 6,
+    title: "Safes",
+    subtitle: "Safes",
+    content: "We offer a wide variety of safes including office / commercial safes, home safes, fireproof safes and depository safes. Our services include the delivery and installation.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/7SV8Up1x2fpusnqR13r7K4yCDyUKi97oZodX9Ag_UhL9t2w2fRjY2j162iXGEyZL47heIB8Ow2okBzQtKB4-HAXsOoeq51w=s856",
+  },
+  
+];
+let isHovered = false;
+// Your script logic here
+const zoomIn = () => {
+  isHovered = true;
+};
+
+const zoomOut = () => {
+  isHovered = true;
+};
+</script>
+
+<style scoped>
+.image-transition-enter-active,
+.image-transition-leave-active {
+  animation: moveImg 2s ease;
+}
+
+.image-transition-enter-to,
+.image-transition-leave-from {
+  opacity: 0.8;
+  transform: translateX(100%);
+}
+
+@keyframes moveImg {
+  0% {
+    opacity: 0;
+    /* transform: translate(0px, 0px); */
+  }
+
+  50% {
+    opacity: 0.5;
+    /* transform: translate(100%, 0); */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wobble {
+  animation: wobble 2s ease;
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.v-responsive {
+  align-items: center;
+}
+
+.reverse-image {
+  transform: scaleX(-1);
+  /* This flips the image horizontally */
+}
+
+.reverse-image-inside {
+  transform: scaleX(1);
+  /* This flips the image horizontally */
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateX(-100%) scale(5);
+
+}
+
+.fade-enter-to {
+  opacity: 1;
+  transform: translateX(0) scale();
+  /* font-size: larger; */
+}
+
+.fade-enter-active {
+  transition: all 2s ease;
+}
+
+.woblle-enter-from {
+  opacity: 0;
+  transform: translateX(-100%);
+
+}
+
+.woblle-enter-to {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.woblle-enter-active {
+  /* transition: all 2s ease; */
+  animation: wobble 2s ease;
+}
+
+.fade-phon-enter-from {
+  opacity: 0;
+  transform: translateX(-100%);
+
+}
+
+.fade-phon-enter-to {
+  opacity: 1;
+  transform: translateX();
+  /* font-size: larger; */
+}
+
+.fade-phon-enter-active {
+  transition: all 5s ease;
+}
+
+
+.img-enter-from {
+  opacity: 0;
+  transform: translateX(350px) translateY(150px);
+  /* transform: translateX(350px); */
+}
+
+.img-enter-to {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+  /* transform: translateX(); */
+}
+
+.img-enter-active {
+  transition: all 2s ease;
+}
+
+.custom-font {
+  /* font-family: 'Anton'; */
+  font-family: 'Anton', sans-serif;
+  /* font-family: 'Archivo Black', sans-serif; */
+
+  font-weight: 50;
+}
+
+/* .custom-font {
+  font-size: 24px;
+  font-weight: bold;
+} */
+
+.body_2 {
+  font-family: 'PT Sans Narrow';
+  font-weight: 400;
+  font-size: 25px;
+}
+/* .opa {
+  opacity: 0;
+} */
+.image-container {
+  position: relative;
+  transition: transform 1s ease;
+}
+
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.603);
+  /* Adjust the opacity as needed */
+  z-index: 1;
+
+}
+
+.text-container {
+  position: relative;
+  z-index: 2;
+}
+
+.text-container h2 {
+  color: rgb(255, 255, 255);
+  /* Adjust text color as needed */
+}
+
+.text-sky-container {
+  position: relative;
+  z-index: 2;
+}
+
+.text-sky-container h2 {
+  color: rgb(0, 0, 0);
+  /* Adjust text color as needed */
+}
+
+.image-container:hover {
+  transform: scale(1.09);
+  /* Increase the scale on hover */
+}
+
+.image2-container {
+  position: relative;
+}
+
+.image2-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Adjust the opacity as needed */
+  z-index: 1;
+
+}
+
+.image-keys-container {
+  position: relative;
+  /* opacity: 0.28; */
+}
+
+.image-keys-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* -webkit-filter: grayscale(100%) brightness(0.8); */
+  background-color: rgba(246, 164, 0, 0.719);
+  /* Adjust the opacity as needed */
+  z-index: 1;
+
+}
+
+.image-sky-container {
+  position: relative;
+  /* opacity: 0.28; */
+}
+
+.image-sky-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* -webkit-filter: grayscale(100%) brightness(0.8); */
+  background-color: rgba(255, 255, 255, 0.719);
+  /* Adjust the opacity as needed */
+  z-index: 1;
+
+}
+
+@media (min-width: 380px) and (max-width: 1025px) {
+  .custom-font {
+    font-size: 50px;
+    font-weight: 200;
+  }
+
+  .d-flex {
+    justify-content: center;
+  }
+}</style>
