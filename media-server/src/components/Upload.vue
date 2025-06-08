@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+const API = import.meta.env.VITE_API_URL
 
 const onDrop = async (event: DragEvent) => {
     const files = event.dataTransfer?.files
@@ -21,7 +22,7 @@ const onDrop = async (event: DragEvent) => {
 const uploadFiles = async (files: FileList) => {
     const formData = new FormData()
     Array.from(files).forEach(file => formData.append('files', file))
-    await axios.post('http://localhost:3000/upload', formData)
+    await axios.post(`${API}/upload`, formData)
 }
 
 onMounted(() => {

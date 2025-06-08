@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename)
 
 const app = express()
 const PORT = 3000
+const VITE_API_URL= 'http://localhost:3001/homelab'
 const TMDB_API_KEY = '22b663590001e9c675232f0c24000ad2'
 
 app.use(cors())
@@ -223,5 +224,5 @@ app.get('/stream123', async (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`)
+  console.log(`Server running on port:${PORT}`)
 })

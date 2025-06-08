@@ -44,6 +44,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+const API = import.meta.env.VITE_API_URL
 
 const router = useRouter()
 const movies = ref<any[]>([])
@@ -56,7 +57,7 @@ const truncate = (text: string, length: number) => {
 
 
 const fetchSuggestions = async () => {
-    const res = await axios.get('http://localhost:3000/suggest/movies')
+    const res = await axios.get(`${API}/suggest/movies`)
 
     // Add `year` and `rating` for use in card badges
     movies.value = res.data.map((m: any) => ({
@@ -72,7 +73,7 @@ const downloadMovie = async (title: string) => {
 
         const fixedTitle = title.trim().toLowerCase().replace(/\s+/g, '+')
 
-        const res = await axios.get('http://localhost:3000/stream123', {
+        const res = await axios.get(`${API}/stream123`, {
             params: { title: fixedTitle }
         })
 

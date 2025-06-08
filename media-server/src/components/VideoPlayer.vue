@@ -13,12 +13,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+const API = import.meta.env.VITE_API_URL
 
 const props = defineProps<{ title: string }>()
 const videoFrame = ref<string | null>(null)
 
 onMounted(async () => {
-    const res = await axios.get('http://localhost:3000/stream123', {
+    const res = await axios.get(`${API}/stream123`, {
         params: { title: props.title }
     })
     videoFrame.value = res.data.videoFrame

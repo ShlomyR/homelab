@@ -48,6 +48,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+const API = import.meta.env.VITE_API_URL
 
 const router = useRouter()
 const query = ref('')
@@ -62,9 +63,22 @@ const genres = ref<string[]>([])
 
 
 const fetchNewReleases = async () => {
-    const res = await axios.get('http://localhost:3000/movies/discover')
+  try {
+    const res = await axios.get(`${API}/movies/discover`)
+
+    console.log('📦 Response:', res.data)
+
+    if (!Array.isArray(res.data)) {
+      console.error('❌ Expected array, got:', res.data)
+      return
+    }
+
     movies.value = res.data
     extractGenres()
+  } catch (err) {
+    console.error('❌ Failed to fetch movies:', err)
+    alert('Could not load new releases.')
+  }
 }
 
 const extractGenres = () => {
@@ -83,7 +97,7 @@ const filteredMovies = computed(() => {
 const searchMovies = async () => {
     if (!query.value) return fetchNewReleases()
     const fixedQuery = query.value.trim().toLowerCase().replace(/\s+/g, '+')
-    const res = await axios.get('http://localhost:3000/movies/search', {
+    const res = await axios.get(`${API}/movies/search`, {
         params: { query: fixedQuery }
     })
     movies.value = res.data
@@ -95,7 +109,7 @@ const openMovie = async (title: string) => {
 
         const fixedTitle = title.trim().toLowerCase().replace(/\s+/g, '+')
 
-        const res = await axios.get('http://localhost:3000/stream123', {
+        const res = await axios.get(`${API}/stream123`, {
             params: { title: fixedTitle }
         })
 
